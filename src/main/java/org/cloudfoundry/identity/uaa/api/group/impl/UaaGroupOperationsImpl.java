@@ -129,8 +129,12 @@ public class UaaGroupOperationsImpl implements UaaGroupOperations {
 
 		return updateGroup(group);
 	}
-
+	
 	public ScimGroup addMember(String groupId, String memberUserName) {
+		return addMember(groupId, memberUserName, false);
+	}
+
+	public ScimGroup addMember(String groupId, String memberUserName, boolean isAdmin) {
 		Assert.hasText(memberUserName);
 
 		ScimGroup group = getGroupById(groupId);
@@ -143,7 +147,10 @@ public class UaaGroupOperationsImpl implements UaaGroupOperations {
 		}
 
 		ScimGroupMember member = new ScimGroupMember(memberId);
-		members.add(member);
+		if (isAdmin) {
+			member.setRoles(ScimGroupMember.GROUP_ADMIN);
+		}
+		members.add(member);		
 		group.setMembers(members);
 
 		return updateGroup(group);

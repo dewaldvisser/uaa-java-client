@@ -56,6 +56,16 @@ public interface UaaGroupOperations {
 	 * @return the group with the member in it
 	 */
 	public ScimGroup addMember(String groupId, String memberName);
+	
+	/**
+	 * Add a member to the group
+	 * 
+	 * @param groupId the group id
+	 * @param memberName the member's username (will be converted to ID)
+	 * @param isAdmin 
+	 * @return the group with the member in it
+	 */
+	public ScimGroup addMember(String groupId, String memberUserName, boolean isAdmin);
 
 	/**
 	 * Remove a member from the group

@@ -15,6 +15,7 @@ package org.cloudfoundry.identity.uaa.api.common;
 
 import org.cloudfoundry.identity.uaa.api.client.UaaClientOperations;
 import org.cloudfoundry.identity.uaa.api.group.UaaGroupOperations;
+import org.cloudfoundry.identity.uaa.api.store.UaaStoreOperations;
 import org.cloudfoundry.identity.uaa.api.user.UaaUserOperations;
 
 /**
@@ -38,4 +39,9 @@ public interface UaaConnection {
 	 * @return an entry point for user APIs
 	 */
 	public UaaUserOperations userOperations();
+	
+	/**
+	 * @return an entry point for store APIs
+	 */
+	public UaaStoreOperations storeOperations();
 }
